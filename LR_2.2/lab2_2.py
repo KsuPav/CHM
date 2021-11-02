@@ -45,10 +45,13 @@ def det_a1(x1, x2):
 def det_a2(x1, x2):
     return f2(x1, x2) * d_1fun_x1(x1, x2) - f1(x1, x2) * d_2fun_x1(x1, x2)
 
-# Якобиан
+  
+# ЯКОБИАН
 def det_J(x1, x2):
     return d_1fun_x1(x1, x2) * d_2fun_x2(x1, x2) - d_2fun_x1(x1, x2) * d_1fun_x2(x1, x2)
 
+
+# РАЗНОСТЬ ВЕКТОРОВ
 def minus_vectors(a, b):
     n = len(a)
     res = np.zeros(n)
@@ -58,6 +61,8 @@ def minus_vectors(a, b):
 
     return res
 
+  
+# НОРМА ВЕКТОРА
 def norma_vector(a):
     sum = 0
     n = len(a)
@@ -67,6 +72,8 @@ def norma_vector(a):
     sum = math.sqrt(sum)
     return sum
 
+  
+# МЕТОД ПРОСТОЙ ИТЕРАЦИИ
 def SimpleIterationsMethod(epsilon, n):
     xk = np.zeros(n)
     xk_tmp = np.zeros(n)
@@ -103,6 +110,8 @@ def SimpleIterationsMethod(epsilon, n):
 
     print(f"x1 = {xk[0]}, x2 = {xk[1]}, on {counter} iteration")
 
+    
+# МЕТОД НЬЮТОНА
 def newtonMethod(x0, epsilon, n):
     
     xk = np.zeros(n)
@@ -127,9 +136,7 @@ def newtonMethod(x0, epsilon, n):
     print(f"x1 = {xk[0]}, x2 = {xk[1]}, on {counter} iteration")
 
     
-# МЕТОД ПРОСТЫХ ИТЕРАЦИЙ
-    
-# ГРАФИК
+# ГРАФИК (МПИ)
 x = np.linspace(-2,2,100)
 phi1_ = []
 phi2_ = []
@@ -151,9 +158,7 @@ for eps in epsilon:
     SimpleIterationsMethod(eps, 2)
 
 
-# МЕТОД ГБЮТОНА
-
-# ГРАФИК
+# ГРАФИК (МН)
 x = np.linspace(0.05,1,100)
 f1_ = []
 f2_ = []
