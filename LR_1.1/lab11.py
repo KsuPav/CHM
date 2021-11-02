@@ -1,3 +1,4 @@
+# КОФАКТОР
 def getCofactor(a, tmp, p, q, n):
   i = 0
   j = 0
