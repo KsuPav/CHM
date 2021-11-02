@@ -101,9 +101,6 @@ plt.ylim(-2,2)
 plt.legend(['phi','x','dphi'])
 plt.show()
 
-"""Будем искать решение на отрезке [-1,0], так как выполнено условие существовании и дифференцируемости phi и:
-$$ \exists q:|\phi'(x)| \leq q < 1$$
-"""
 
 print("Simple iteration:")
 x_SI = simpleIteration(phi, dphi, -1, 0, eps = 0.0000001)
@@ -111,7 +108,6 @@ x_SI = simpleIteration(phi, dphi, -1, 0, eps = 0.0000001)
 print("The value of the function at the found point:")
 f(x_SI)
 
-"""# Метод Нютона"""
 
 x = np.linspace(-3,5,100)
 plt.plot(x,f(x))
