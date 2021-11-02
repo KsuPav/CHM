@@ -12,6 +12,7 @@ def getCofactor(a, tmp, p, q, n):
           j = 0
           i += 1
 
+          
 # ДЕТЕРМИНАНТ
 def determinant(a, n):
     d = 0
@@ -77,6 +78,7 @@ def transpose(a, n):
             b[i][j] = a[j][i]
     return b
 
+  
 # ПЕРЕМНОЖЕНИЕ МАТРИЦ
 def multi(M1, M2):
     sum = 0
@@ -98,7 +100,7 @@ def multi(M1, M2):
     return ans
 
   
-# 
+# РЕШЕНИЕ СЛАУ
 def lup_solve(l, u, pi, b, n):
     x = [0 for i in range(n)]
     y = [0 for i in range(n)]
@@ -121,7 +123,7 @@ def lup_solve(l, u, pi, b, n):
     return x
 
 
-# 
+# МАТРИЦА А ПОСЛЕ LUP ПРЕОБРАЗОВАНИЯ
 def lupdecompose(a, n):
     pi = [i for i in range(n)]
 
@@ -143,7 +145,7 @@ def lupdecompose(a, n):
     return pi    
     
     
-# 
+# НИЖНЯЯ И ВЕРХНЯЯ ТРЕУГОЛЬНЫЕ МАТРИЦЫ
 def get_lu(a):
     n = len(a)
     l = [[0] * n for i in range(0, n)]
@@ -159,7 +161,7 @@ def get_lu(a):
     return l, u
 
   
-# 
+# ОКРУГЛЕНИЕ
 def roundMatrix(a, after):
   retVal = [[0] * len(a) for _ in range(len(a[0]))]
 
