@@ -11,7 +11,8 @@ def getCofactor(a, tmp, p, q, n):
         if j == n - 1:
           j = 0
           i += 1
-          
+
+# ДЕТЕРМИНАНТ
 def determinant(a, n):
     d = 0
     if n == 1:
@@ -28,7 +29,9 @@ def determinant(a, n):
 
     return d
 
-def adjoin(a, n):  # Сопряженная матрица
+
+# СОПРЯЖЕННАЯ МАТРИЦА
+def adjoin(a, n):
     adj = [[0] * n for _ in range(n)]
     if n == 1:
         adj[0][0] = 1
@@ -48,7 +51,9 @@ def adjoin(a, n):  # Сопряженная матрица
             adj[j][i] = sign * (determinant(tmp, n - 1))  # (-1^(i+j)*|алгебр дополнение|)
 
     return adj
-    
+
+  
+# ОБРАТНАЯ МАТРИЦА
 def inverse(a, b, n):
     det = determinant(a, n)
     if det == 0:
@@ -63,6 +68,8 @@ def inverse(a, b, n):
 
     return True
 
+  
+# ТРАНСПОНИРОВАНИЕ МАТРИЦЫ
 def transpose(a, n):
     b = [[0] * n for _ in range(n)]
     for i in range(n):
@@ -70,6 +77,7 @@ def transpose(a, n):
             b[i][j] = a[j][i]
     return b
 
+# ПЕРЕМНОЖЕНИЕ МАТРИЦ
 def multi(M1, M2):
     sum = 0
     tmp = []
@@ -89,6 +97,8 @@ def multi(M1, M2):
         tmp = []
     return ans
 
+  
+# 
 def lup_solve(l, u, pi, b, n):
     x = [0 for i in range(n)]
     y = [0 for i in range(n)]
@@ -110,6 +120,8 @@ def lup_solve(l, u, pi, b, n):
     x = [round(x[i], 5) for i in range(len(x))]
     return x
 
+
+# 
 def lupdecompose(a, n):
     pi = [i for i in range(n)]
 
@@ -130,6 +142,8 @@ def lupdecompose(a, n):
                 a[i][j] = a[i][j] - a[i][k] * a[k][j]
     return pi    
     
+    
+# 
 def get_lu(a):
     n = len(a)
     l = [[0] * n for i in range(0, n)]
@@ -144,6 +158,8 @@ def get_lu(a):
                 u[i][j] = a[i][j]
     return l, u
 
+  
+# 
 def roundMatrix(a, after):
   retVal = [[0] * len(a) for _ in range(len(a[0]))]
 
@@ -153,6 +169,8 @@ def roundMatrix(a, after):
 
   return retVal
 
+
+# ВЫВОД МАТРИЦЫ
 def show(a, n):
     for i in range(0, n):
         for j in range(0, n):
