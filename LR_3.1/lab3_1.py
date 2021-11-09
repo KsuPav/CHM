@@ -6,7 +6,7 @@ def function(x):
     return np.exp(x) + x
 
 
-# вычисление произведения элементов в методе Лагранжа
+# вычисление произведения элементов в методе Лагранжа (лагранжевы многочлены влияния)
 def multiplyLagrange(x0, x, n, index):
     
     multiply = 1
@@ -18,16 +18,7 @@ def multiplyLagrange(x0, x, n, index):
     return multiply
 
 
-# вычисление произведения элементов в методе Ньютона
-def multiplyNewton(x0, x, n):
-    multiply = 1
-
-    for i in range(0, n):
-            multiply = multiply * (x0 - x[i])
-
-    return multiply
-
-
+# интерполяционный многочлен Лагранжа
 def polynomOfLagrange(x0, x, n):
     summary = 0
     
@@ -37,6 +28,7 @@ def polynomOfLagrange(x0, x, n):
     return summary
 
 
+# Разделенные разности
 def divideddifference(x, n):
     if n > 2:
         x1 = np.zeros(n-1)
@@ -53,7 +45,18 @@ def divideddifference(x, n):
     if n == 1:
         return function(x[0])
 
+        
+# вычисление произведения элементов в методе Ньютона
+def multiplyNewton(x0, x, n):
+    multiply = 1
 
+    for i in range(0, n):
+            multiply = multiply * (x0 - x[i])
+
+    return multiply
+
+
+# интерполяционный многочлен Ньютона
 def polynomOfNewton(x0, x, n):
 
     summary = 0
