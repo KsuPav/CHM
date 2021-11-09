@@ -26,6 +26,7 @@ def stop(y, y1, eps):
     else:
         return False
 
+
 def runge_kutta(f, a, b, h, y0, z):
     n = int((b - a) / h)
     x = [i for i in np.arange(a, b + h, h)]
@@ -44,12 +45,14 @@ def runge_kutta(f, a, b, h, y0, z):
         k.append(k[i] + (l1 + 2 * l2 + 2 * l3 + l4) / 6)
     return x, y, k
 
+
 def newN(n_last, n, ans_last, ans, y1):
     x, y = ans_last[0], ans_last[1]
     phi_last = y[-1] - y1
     x, y = ans[0], ans[1]
     phi = y[-1] - y1
     return n - (n - n_last) / (phi - phi_last) * phi
+
 
 def shooting_method(a, b, y0, y1, h, eps):
     n_last = 1
@@ -67,6 +70,7 @@ def shooting_method(a, b, y0, y1, h, eps):
 
     return ans
 
+
 def tma(a, b, c, d, shape):
     p = [-c[0] / b[0]]
     q = [d[0] / b[0]]
@@ -77,6 +81,7 @@ def tma(a, b, c, d, shape):
     for i in reversed(range(shape)):
         x[i] = p[i] * x[i + 1] + q[i]
     return x[:-1]
+
 
 def finite_difference(a, b, alpha, beta, delta, gamma, y0, y1, h):
     n = int((b - a) / h)
@@ -89,6 +94,7 @@ def finite_difference(a, b, alpha, beta, delta, gamma, y0, y1, h):
 
     y = tma(A, B, C, D, len(A))
     return x, y
+
 
 def runge_romberg(ans, exact):
     k = ans[0]['h'] / ans[1]['h']
@@ -109,6 +115,7 @@ def runge_romberg(ans, exact):
         fd_err[i] = abs(fd_err[i] - y_ex[i])
 
     return {'Shooting': shoot_err, 'FD': fd_err}
+
 
 def sse(f, y):
     return round(sum([(f_i - y_i) ** 2 for f_i, y_i in zip(f, y)]), 5)
