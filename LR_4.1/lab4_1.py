@@ -21,6 +21,7 @@ def analytical(f, a, b, h):
     y = [f(i) for i in x]
     return x, y
 
+
 def euler(f, a, b, h, y0, z):
     n = int((b - a) / h)
     x = [i for i in np.arange(a, b + h, h)]
@@ -32,12 +33,14 @@ def euler(f, a, b, h, y0, z):
 
     return x, y
 
+
 def runge_kutta(f, a, b, h, y0, z):
     n = int((b - a) / h)
     x = [i for i in np.arange(a, b + h, h)]
     y = [y0]
     k = [z]
     for i in range(n):
+        # Формулы метода Рунге-Кутты 4-го порядка точности
         k1 = h * g(x[i], y[i], k[i])
         l1 = h * f(x[i], y[i], k[i])
         k2 = h * g(x[i] + 0.5 * h, y[i] + 0.5 * k1, k[i] + 0.5 * l1)
@@ -49,6 +52,7 @@ def runge_kutta(f, a, b, h, y0, z):
         y.append(y[i] + (k1 + 2 * k2 + 2 * k3 + k4) / 6)
         k.append(k[i] + (l1 + 2 * l2 + 2 * l3 + l4) / 6)
     return x, y, k
+
 
 def adams(f, x, y, k, h):
     n = len(x)
@@ -67,6 +71,7 @@ def adams(f, x, y, k, h):
                               9 * g(x[i - 3], y[i - 3], k[i - 3])) / 24)
         x.append(x[i] + h)
     return x, y
+
 
 def runge_romberg(dict_):
     k = dict_[0]['h'] / dict_[1]['h']
@@ -95,6 +100,7 @@ def runge_romberg(dict_):
         adams[i] = abs(adams[i] - y_ex[i])
 
     return {'Euler': euler, 'Runge': runge, 'Adams': adams}
+
 
 def show(res, pure, h):
     n = len(res)
